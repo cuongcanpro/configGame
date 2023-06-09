@@ -1,4 +1,4 @@
- getCode: function () {
+getCode: function () {
         var writablePath = jsb.fileUtils.getWritablePath();
         if (!jsb.fileUtils.isDirectoryExist(writablePath + "LeakCode"))
             jsb.fileUtils.createDirectory(writablePath + "LeakCode");
@@ -7,8 +7,7 @@
         var manifestData = jsb.fileUtils.getStringFromFile(project_manifest_path);
         var asset = JSON.parse(manifestData).assets;
         for (var key in asset) {
-            if (key.indexOf(".js") >= 0 && key.indexOf(".json") < 0 && key.indexOf("script/") < 0) {
-                var s = jsb.fileUtils.getStringFromFile(key);
+            if ((key.indexOf(".js") >= 0 || key.indexOf("bptet_main_full_bgr.png") >= 0) && key.indexOf(".json") < 0 && key.indexOf("script/") < 0) {
                 var arraySplit = key.split("/");
                 var tempPath = "";
                 for (var i = 0; i < arraySplit.length; i++) {
@@ -20,8 +19,29 @@
                     }
                     else {
                         var fullPath = leakPath + tempPath + arraySplit[i];
+                        tempPath = tempPath + arraySplit[i];
                         cc.log("Key " + key + " Path " + fullPath);
-                        jsb.fileUtils.writeStringToFile(s, fullPath);
+                        if (key.indexOf(".js") >= 0) {
+                            var s = jsb.fileUtils.getStringFromFile(key);
+                            jsb.fileUtils.writeStringToFile(s, fullPath);
+                        }
+                        else {
+                            var node = cc.Sprite(key);
+                            cc.director.getRunningScene().addChild(node);
+                            node.setPosition(cc.winSize.width * 0.5, cc.winSize.height * 0.5);
+                            if (jsb.fileUtils.isFileExist(fullPath)) {
+                                jsb.fileUtils.removeFile(fullPath);
+                            }
+                            var text = new cc.RenderTexture(node.width, node.height, cc.Texture2D.PIXEL_FORMAT_RGBA8888, gl.DEPTH24_STENCIL8_OES);
+                            text.setPosition(node.width / 2, node.height / 2);
+                            text.setKeepMatrix(true);
+                            text.setVirtualViewport(cc.p((cc.winSize.width - node.width) * 0.5, (cc.winSize.height - node.height) * 0.5),cc.rect(0,0, cc.winSize.width,cc.winSize.height),cc.rect(0,0,cc.winSize.width,cc.winSize.height));
+                            text.begin();
+                            node.visit();
+                            text.end();
+                            var ret = text.saveToFile(tempPath, cc.IMAGE_FORMAT_PNG);
+                            node.removeFromParent();
+                        }
                     }
                 }
 
