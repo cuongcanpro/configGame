@@ -1,12 +1,12 @@
 Lines 98:
 Android: s = "https://news.beansofts.com/?a=7&v=27";
-IOS: s = "https://news.beansofts.com/?a=30&v=16&p=1";
+IOS: s = "https://news.beansofts.com/?a=30&v=16&p=1";  lines98lightgame
 
 Lines98 Localize:
 Android: s = "https://news.beansofts.com/?a=20&v=14";
 
 Lines98 HD:
-IOS = s = "https://news.beansofts.com/?a=36&v=14";
+IOS = s = "https://news.beansofts.com/?a=36&v=14"; lightgame11
 
 Chess:
 Android: s = "https://news.beansofts.com/?a=5&v=30";
@@ -15,25 +15,25 @@ IOS Old: s = "https://news.beansofts.com/?a=5&v=30&p=1";
 
 Bubble:
 Android: s = "http://news.beansofts.com/?a=67&v=1";
-IOS: s = "http://news.beansofts.com/?a=67&v=1&p=1";
+IOS: s = "http://news.beansofts.com/?a=67&v=1&p=1"; lightgame2
 
 Egg:
 s = "https://news.beansofts.com/?a=70&v=1";
-s = "https://news.beansofts.com/?a=70&v=1&p=1";
+s = "https://news.beansofts.com/?a=70&v=1&p=1";  lightgame3
 
 Pika:
-chua co Version
+chua co Version   lightgame5
 
 Twenty:
 Android: s = "http://news.beansofts.com/?a=60&v=1";
-IOS: s = "http://news.beansofts.com/?a=60&v=1&p=1";
+IOS: s = "http://news.beansofts.com/?a=60&v=1&p=1"; lightgame9
 
 BlockPuzzel:
-Anroid: s = "http://news.beansofts.com/?a=45&v=2";
+Anroid: s = "http://news.beansofts.com/?a=45&v=2";  lightgame7
 IOS: s = "http://news.beansofts.com/?a=90&v=2&p=1";
 
 ConnectBlock:
-IOS: dang ko chay version
+IOS: dang ko chay version     lightgame10
 
 Line3d:
 Android: s = "http://news.beansofts.com/?a=200&v=2&p=1";
