@@ -48,3 +48,10 @@ getCode: function () {
             }
         }
     }
+
+
+var rawConfig = GV.RESOURCE_MGR._gameConfigs;
+        for (var gameConfig in rawConfig) {
+            var config = rawConfig[gameConfig];
+            cc.log(JSON.stringify(config));
+        }
